@@ -23,21 +23,21 @@ This repository contains code for the paper "Double Visual Defense: Adversarial 
 This paper studies the robustness of vision-language models against adversarial visual perturbations, and introduces a novel double visual defense for improving it. 
 Rather than the previous works' lightweight adversarial fine-tuning of a pre-trained CLIP model, we opt for adversarial vision-language pre-training on web-scale data. 
 We then add an extra layer of defense by introducing adversarial visual instruction tuning. 
-The models that result from each stage, $\Delta$CLIP and $\Delta^2$LLaVA, 
+The models that result from each stage, $\Delta$ CLIP and $\Delta^2$ LLaVA, 
 show substantially enhanced robustness and set a new state-of-the-art in adversarial defense for vision-language models. 
-For example, $\Delta$CLIP surpasses the previous best models on ImageNet-1k by ~20% in terms of adversarial robustness. 
-Similarly, compared to prior art, $\Delta^2$LLaVA brings a ~30% robustness improvement to image captioning task and a ~20% robustness improvement to visual question answering task. 
+For example, $\Delta$ CLIP surpasses the previous best models on ImageNet-1k by ~20% in terms of adversarial robustness. 
+Similarly, compared to prior art, $\Delta^2$ LLaVA brings a ~30% robustness improvement to image captioning task and a ~20% robustness improvement to visual question answering task. 
 Furthermore, our models exhibit stronger zero-shot recognition capability, fewer hallucinations, and superior reasoning performance compared to baselines. 
 
 
 ## **Model Zoo**
-For evaluating $\Delta$CLIP model, please check [clip.md](docs/clip.md).
-For evaluating $\Delta^2$LLaVA model, please check the [robustness.md](docs/robustness.md) section.
+For evaluating $\Delta$ CLIP model, please check [clip.md](docs/clip.md).
+For evaluating $\Delta^2$ LLaVA model, please check [robustness.md](docs/robustness.md).
 
-| Model                     | Link                        |
-|---------------------------|-----------------------------|
-| $\Delta$CLIP      | [🤗 HuggingFace Model](https://huggingface.co/collections/zw123/delta-clip-67d770f8868b5bb02ee99041) |
-| $\Delta^2$LLaVA | [🤗 HuggingFace Model](https://huggingface.co/collections/zw123/delta2-llava-67d78405b0ef537fd03f31b9) |
+| Model            | Link                        |
+|------------------|-----------------------------|
+| $\Delta$ CLIP    | [🤗 HuggingFace Model](https://huggingface.co/collections/zw123/delta-clip-67d770f8868b5bb02ee99041) |
+| $\Delta^2$ LLaVA | [🤗 HuggingFace Model](https://huggingface.co/collections/zw123/delta2-llava-67d78405b0ef537fd03f31b9) |
 
 
 ## **Install**
@@ -45,7 +45,7 @@ The installation process largely follows the [LLaVA](https://github.com/haotian-
 
 1. Clone this repository and navigate to Double_Visual_Defense folder
 ```bash
-git clone TBD
+git clone https://github.com/zw615/Double_Visual_Defense.git
 cd Double_Visual_Defense/Open-LLaVA-NeXT
 ```
 
