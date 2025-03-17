@@ -21,4 +21,4 @@ For targeted attacks on COCO, run
 bash scripts/batch_multi_1gpu_launch_targeted.sh
 ```
 Set `BASE_WEIGHT_PATH` and `MODEL_NAME` to specify LLaVA model to be evaluated.
-With 10,000 iterations it takes about 2 hours per image on an A5000 GPU.
+With 10,000 iterations it takes about 2 hours per image on an A100 GPU.

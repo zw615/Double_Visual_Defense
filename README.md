@@ -74,7 +74,7 @@ For more details, refer to the [LLaVA](https://github.com/haotian-liu/LLaVA) and
 
 It is worth mentioning that to train on fewer GPUs with less memories, you can reduce the `per_device_train_batch_size` and increase the `gradient_accumulation_steps` accordingly. 
 Always keep the global batch size the same: `per_device_train_batch_size` x `gradient_accumulation_steps` x `num_gpus`.
-However, due to a known [bug](https://huggingface.co/blog/gradient_accumulation) of the gradient accumulation step in earlier version of (Transformers)[https://github.com/huggingface/transformers],
+However, due to a known [bug](https://huggingface.co/blog/gradient_accumulation) of the gradient accumulation step in earlier version of [Transformers](https://github.com/huggingface/transformers),
 we also implemented a manual monkey patch specifically for llama models. See [llama_grad_accum_monkey_patch.py](llava/train/llama_grad_accum_monkey_patch.py).
 Upgrading to the latest Transformers version might solve the issue, but we've not tested it. 
 
