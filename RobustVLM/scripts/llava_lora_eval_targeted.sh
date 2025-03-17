@@ -18,7 +18,7 @@ conda activate double_visual_defense
 BASE_DIR=[/path/to/Double_Visual_Defense/RobustVLM]
 cd ${BASE_DIR}
 export OUTPUT_PATH=${BASE_DIR}/output/stealthy_targeted_attack/${EXP_NAME}
-export DATA_BASE_PATH=/data3/zeyu/robust_vlm_data # TODO: change path
+export DATA_BASE_PATH=[/path/to/robust_vlm_data]
 mkdir -p ${OUTPUT_PATH}
 
 

@@ -164,6 +164,11 @@ The code of this site is released under the MIT license.
 
 LLNL-Code-2002980
 
+We would like to thank TPU Research Cloud (TRC) program, Google Cloud Research Credits program, and AWS Cloud Credit for Research program for partially supporting our computing needs. 
+Cihang Xie is partially support by a gift from Open Philanthropy. 
+This work is partially based upon the work supported by the National Center for Transportation Cybersecurity and Resiliency (TraCR) (a U.S. Department of Transportation National University Transportation Center) headquartered at Clemson University, Clemson, South Carolina, USA. 
+Any opinions, findings, conclusions, and recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of TraCR, and the U.S. Government assumes no liability for the contents or use thereof. 
+
 ## **Citation**
 If you find this repository useful, please consider citing our paper:
 ```bibtex
