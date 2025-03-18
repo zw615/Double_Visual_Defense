@@ -5,7 +5,7 @@ This repository contains code for the paper "Double Visual Defense: Adversarial 
 
 - The `CLIP_benchmark` folder contains zero-shot evaluation code of both clean performances and adversarial robustness of CLIP models.
 - The `RobustVLM` folder contains the robustness evaluation code of VLM Captioning and VQA and VLM Targeted Attacks.
-- The `Open-LLaVA-NeXT` folder contains the training code of $\Delta^2$LLaVA.
+- The `Open-LLaVA-NeXT` folder contains the training code of $\Delta^2$ LLaVA.
 
 
 <p align="center">
@@ -69,13 +69,13 @@ pip install flash-attn==2.6.3 --no-build-isolation
 The data preparation process of LLaVA-v1.5 largely follows the [LLaVA](https://github.com/haotian-liu/LLaVA) repo.
 
 ### **Training Overview**
-The following presents a breif overview of how to train $\Delta^2$LLaVA models. 
+The following presents a breif overview of how to train $\Delta^2$ LLaVA models. 
 For more details, refer to the [LLaVA](https://github.com/haotian-liu/LLaVA) and [Open-LLaVA-NeXT](https://github.com/xiaoachen98/Open-LLaVA-NeXT) repo.
 
 It is worth mentioning that to train on fewer GPUs with less memories, you can reduce the `per_device_train_batch_size` and increase the `gradient_accumulation_steps` accordingly. 
 Always keep the global batch size the same: `per_device_train_batch_size` x `gradient_accumulation_steps` x `num_gpus`.
 However, due to a known [bug](https://huggingface.co/blog/gradient_accumulation) of the gradient accumulation step in earlier version of [Transformers](https://github.com/huggingface/transformers),
-we also implemented a manual monkey patch specifically for llama models. See [llama_grad_accum_monkey_patch.py](llava/train/llama_grad_accum_monkey_patch.py).
+we also implemented a manual monkey patch specifically for llama models. See [llama_grad_accum_monkey_patch.py](Open-LLaVA-NeXT/llava/train/llama_grad_accum_monkey_patch.py).
 Upgrading to the latest Transformers version might solve the issue, but we've not tested it. 
 
 #### Pretrain
@@ -84,11 +84,11 @@ Please download the 558K subset of the LAION-CC-SBU dataset with BLIP captions [
 Each extra number of PGD forward-backward step brings 1x more compute upon vanilla LLaVA training, and the total training time increases accordingly.
 Note that *Pretrain takes around 5.5 hours for LLaVA-v1.5-13B on 8x A100 (80G), due to the increased resolution to 336px. It takes around 3.5 hours for LLaVA-v1.5-7B.*
 
-Training script with DeepSpeed ZeRO-2: [`adv_pretrain_template_multinode.sh`](scripts/v1_5/train/adv_pretrain_template_multinode.sh).
+Training script with DeepSpeed ZeRO-2: [`adv_pretrain_template_multinode.sh`](Open-LLaVA-NeXT/scripts/v1_5/train/adv_pretrain_template_multinode.sh).
 
 - `--mm_projector_type mlp2x_gelu`: the two-layer MLP vision-language connector.
-- `--pretrain_vision_tower /path/to/delta_clip_h14_336.pt`: $\Delta$CLIP-H/14-336.
-- `--image_processor_name_or_path ./clip_preprocess/open_clip_336/preprocessor_config.json`: preprocess config of $\Delta$CLIP-H/14-336.
+- `--pretrain_vision_tower /path/to/delta_clip_h14_336.pt`: $\Delta$ CLIP-H/14-336.
+- `--image_processor_name_or_path ./clip_preprocess/open_clip_336/preprocessor_config.json`: preprocess config of $\Delta$ CLIP-H/14-336.
 - `--epsilon`: the PGD attack radius.
 - `--step_size`: the PGD attack step size.
 - `--num_steps`: the PGD attack number of steps.
@@ -125,12 +125,12 @@ After downloading all of them, organize the data as follows in `./playground/dat
 
 It is not recommended to use any clean pretrained LLaVA projectors as they are not adversarially robust.
 
-Due to memory cost, we default to Low-rank Adaptation (LoRA) technique in $\Delta^2$LLaVA training. But feel free to try fully fine-tuning.
+Due to memory cost, we default to Low-rank Adaptation (LoRA) technique in $\Delta^2$ LLaVA training. But feel free to try fully fine-tuning.
 
 Each extra number of PGD forward-backward step brings 1x more compute upon vanilla LLaVA training, and the total training time increases accordingly.
 Note that *Visual instruction tuning takes around 20 hours for LLaVA-v1.5-13B on 8x A100 (80G), due to the increased resolution to 336px. It takes around 10 hours for LLaVA-v1.5-7B on 8x A100 (40G).*
 
-Training script with DeepSpeed ZeRO-2: [`adv_finetune_lora_template_multinode.sh`](scripts/v1_5/train/adv_finetune_lora_template_multinode.sh).
+Training script with DeepSpeed ZeRO-2: [`adv_finetune_lora_template_multinode.sh`](Open-LLaVA-NeXT/scripts/v1_5/train/adv_finetune_lora_template_multinode.sh).
 
 New options to note:
 
